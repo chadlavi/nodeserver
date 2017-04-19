@@ -1,10 +1,11 @@
 #!/bin/bash
 
-#############################################################################################################################
-#                                                                                                                           #
-#  cf. https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04  #
-#                                                                                                                           #
-#############################################################################################################################
+###########################################################################################
+#                                                                                         #
+#  cf. https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-applicat  #
+#  ion-for-production-on-ubuntu-16-04                                                     #
+#                                                                                         #
+###########################################################################################
 
 cd ~
 curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
@@ -16,8 +17,6 @@ pm2 startup systemd
 
 sudo cat nginx-server-config > /etc/nginx/sites-available/default
 sudo nginx -t
-sudo systemctl restart nginx
-sudo ufw allow 'Nginx Full'
 
 # FOR HTTPS:
 #sudo apt-get install letsencrypt -y
@@ -61,3 +60,5 @@ sudo ufw allow 'Nginx Full'
 #sudo systemctl start nginx
 
 pm2 start app/server.js
+sudo systemctl restart nginx
+sudo ufw allow 'Nginx Full'
